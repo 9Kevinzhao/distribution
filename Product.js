@@ -27,4 +27,5 @@ const Product = functions(){
       Prime = false;
     }
   }
+  return{Name,Price,Space,Prime}
 }
