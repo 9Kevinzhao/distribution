@@ -18,4 +18,13 @@ const Truck = function(size){
       }
     }
 
+    function spaceEfficency(){
+      let sum = 0;
+      let len = inventory.length;
+      for(let x=0;x<len; x++){
+        let node = inventory.getNode(x);
+        sum += node.getValue.space;
+      }
+    }
+
 }

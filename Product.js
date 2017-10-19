@@ -2,30 +2,29 @@ const Product = functions(){
   let Name = CreateName();
   let Price = CreateRandomNumber();
   let Space= CreateRandomNumber();
-  let Prime = CreatePrime;
+  let Prime = CreatePrime();
 
   function CreateName(){
+    let word="";
     for(let i=0;i<5;i++){
     let c = Math.floor(25*Math.random())+65;
     let letter = String.fromCharCode(c)
-    Name += letter;
+    word += letter;
   }
-  return Name;
+  return word;
   }
 
   function CreateRandomNumber(){
-    Price=Math.floor(Math.random()*10000)/100);
-    Space=Math.floor(Math.random()*10000)/100);
-
+    let n =Math.floor(Math.random()*10000)/100);
+    return n;
   }
 
   function CreatePrime(){
     if(Math.random()>0.5){
-      Prime = true;
+      return true;
     }
     else{
-      Prime = false;
+      return false;
     }
   }
-  return{Name,Price,Space,Prime}
 }

@@ -26,7 +26,7 @@ Const LinkedList = function(){
     let temp=new Node(undefined);
     let start=root;
     let last;
-    while(start.getValue()!==node.getValue()){
+    while(start.getValue()!==Node.getValue()){
       last=start;
       start=start.getNext();
     }

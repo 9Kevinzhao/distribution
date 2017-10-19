@@ -1,5 +1,5 @@
 //require all of the other files, with node.js,  linkedlist.js, and queue.js
-
+const Node = require
 function configureWareHouse(numberofitems){
     let Warehouse = new Queue();
     //fill the warehouse with new Products
@@ -11,6 +11,7 @@ function configureWareHouse(numberofitems){
 }
 function configureTruckFleet(numberoftrucks){
     let theFleet = new LinkedList();
+    
     //fill the fleet with different sized trucks using math.random()
     return theFleet;
 }
