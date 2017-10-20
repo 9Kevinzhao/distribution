@@ -1,8 +1,10 @@
 Const Node=require('./node.js');
 Const LinkedList=require('./LinkedList.js');
+Const Queue = require('.queue.js');
+Const Product = require('./Product.js')
 const Truck = function(size){
     let type = size;
-    let inventory = new LinkedList();
+    let inventory = [];
     let capacity = setCapacity(size);
 
     function setCapacity(){
