@@ -1,7 +1,7 @@
-Const Node=require('./node.js');
-Const LinkedList=require('./LinkedList.js');
-Const Queue = require('.queue.js');
-Const Product = require('./Product.js')
+const Node=require('./node.js');
+const LinkedList=require('./LinkedList.js');
+const Queue = require('.queue.js');
+const Product = require('./Product.js')
 const Truck = function(size){
     let type = size;
     let inventory = [];
@@ -24,9 +24,9 @@ const Truck = function(size){
       let sum = 0;
       let len = inventory.length;
       for(let x=0;x<len; x++){
-        let node = inventory.getNode(x);
-        sum += node.getValue.space;
+        sum += inventory[x].space;
       }
+      return sum/capacity
     }
 
 }

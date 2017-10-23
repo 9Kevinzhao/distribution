@@ -13,6 +13,8 @@ function configureWareHouse(numberofitems){
 
 function configureTruckFleet(numberoftrucks){
     let theFleet = new Queue();
+    for (let i=0; i<numberoftrucks; i++){
+
     let r = Math.random();
     if(r>0.33){
       theFleet.enqueue(new Truck("small"));
@@ -23,16 +25,29 @@ function configureTruckFleet(numberoftrucks){
     else{
       theFleet.enqueue(new Truck("large"));
     }
+  }
     //fill the fleet with different sized trucks using math.random()
     return theFleet;
 }
 function distribute(wh,tf){
     //distribute the products in the warehouse to the truck fleet.
     let ready = new Queue()
-    while(!Warehouse.isEmpty && !theFleet.isEmpty)
+    let currentTruck=tf.dequeue()
+    while(!Warehouse.isEmpty && !theFleet.isEmpty){
+      while(currentTruckspaceEfficiency()<1){
+        currentTruck.inventory.push(wh.enqueue());
+      }
+      currentTruck.inventory.push(wh.dequeue());
+    }
+    ready.enqueue(currentTruck)
 }
 function ship(fleet,percent){
     //if the trucks spaceEfficency is greater than or equal to the percent, then remove the truck from the fleet's linked list
+    for(let i=0; i<fleet.list.length; i++){
+      if(fleet.list[i].spaceEfficency()>percent){
+        fleet.dequeue();
+      }
+  }
 }
 function main(){
     let flemhouse = configureWareHouse();
