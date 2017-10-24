@@ -35,31 +35,29 @@ function distribute(wh,tf){
     let currentTruck=tf.dequeue()
     while(!Warehouse.isEmpty && !theFleet.isEmpty){
       while(currentTruckspaceEfficiency()<1){
-        currentTruck.inventory.push(wh.enqueue());
+        currentTruck.inventory.push(wh.enqueue(Product));
       }
       currentTruck.inventory.push(wh.dequeue());
     }
     ready.enqueue(currentTruck)
 }
-function ship(fleet,percent){
+function ship(fleet){
     //if the trucks spaceEfficency is greater than or equal to the percent, then remove the truck from the fleet's linked list
-    for(let i=0; i<fleet.list.length; i++){
-      if(fleet.list[i].spaceEfficency()>percent){
-        fleet.dequeue();
-      }
-  }
+
 }
 function main(){
     let flemhouse = configureWareHouse();
     let flemfleet = configureTruckFleet();
-    flemfleet = distribute(flemhouse,flemfleet);
-    let shipping = ship(flemfleet,0.80);
-    for(let s=0;s<shipping.length;s++){
-        console.log("Truck "+s+" is in route");
-        console.log("-----------------------");
-        while(s.getNext() != null){
-            console.log(shipping[s].getValue().spaceEfficiency());
-        }
+    let ready = distribute(flemhouse,flemfleet);
+
+    console.log(ready.dequeue());
+    for(let s=0;s<ready.length;s++){
+      console.log("Truck "+s+" is in route ");
+      console.log("-------------------");
+      while(!ready.isEmpty()){
+        let ct=ready.depueue();
+        console.log(ct.space)
+      }
     }
 }
 
