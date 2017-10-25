@@ -1,4 +1,4 @@
-const Product = functions(){
+const Product = function(){
   let Name = CreateName();
   let Price = CreateRandomNumber();
   let Space= CreateRandomNumber();
@@ -15,7 +15,7 @@ const Product = functions(){
   }
 
   function CreateRandomNumber(){
-    let n =Math.floor(Math.random()*10000)/100);
+    let n =Math.floor(Math.random()*10000/100);
     return n;
   }
 
