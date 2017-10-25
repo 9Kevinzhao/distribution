@@ -1,5 +1,4 @@
-const Node=require('./node.js');
-const LinkedList=require('./LinkedList.js');
+
 const Queue = require('.queue.js');
 const Product = require('./Product.js')
 const Truck = function(size){

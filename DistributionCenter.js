@@ -32,14 +32,15 @@ function configureTruckFleet(numberoftrucks){
 function distribute(wh,tf){
     //distribute the products in the warehouse to the truck fleet.
     let ready = new Queue()
-    let currentTruck=tf.dequeue()
-    while(!Warehouse.isEmpty && !theFleet.isEmpty){
-      while(currentTruckspaceEfficiency()<1){
+
+    while(!wh.isEmpty && !tf.isEmpty){
+      let currentTruck=tf.dequeue();
+      while(currentTruck.spaceEfficiency()<1){
         currentTruck.inventory.push(wh.enqueue(Product));
       }
       currentTruck.inventory.push(wh.dequeue());
     }
-    ready.enqueue(currentTruck)
+    ready.enqueue(currentTruck);
 }
 function ship(fleet){
     //if the trucks spaceEfficency is greater than or equal to the percent, then remove the truck from the fleet's linked list
@@ -47,6 +48,7 @@ function ship(fleet){
 }
 function main(){
     let flemhouse = configureWareHouse();
+
     let flemfleet = configureTruckFleet();
     let ready = distribute(flemhouse,flemfleet);
 
@@ -56,7 +58,10 @@ function main(){
       console.log("-------------------");
       while(!ready.isEmpty()){
         let ct=ready.depueue();
-        console.log(ct.space)
+        console.log(ct.spaceEfficency());
+        for(let i=0;i<ct.inventory.length;i++){
+          console.log(ct.inventory[i].name);
+        }
       }
     }
 }
